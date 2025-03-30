@@ -1,5 +1,20 @@
 {% extends "layout.html" %}
 {% block title %} Home Page {% endblock title %}
 {% block content %}
-<h1>My App | First Page</h1>
+<h1 class = 'text-5xl '>Chais | All chais</h1>
+
+<div class = 'grid grid-cols-3 gap-4'>
+    {% for chai in chais %}
+    <div class="chai-item p-5 bg-slate-50">
+        <img src="{{chai.image.url}}" class="w-[50%]" alt="">
+        <h3 class='text-3xl text-black'>{{chai.name}}</h3>
+        <a href="{% url 'chai-detail' chai.id %}">
+            <button type="button" class="inline bg-orange-400 w-[100%]">
+                {{chai.type}} || {{chai.id}}
+            </button>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
 {% endblock content %}
